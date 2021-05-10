@@ -9,7 +9,10 @@ public class Blumen : MonoBehaviour
     private bool isSpacePressed, isKPressed;
 
     public float startTime, stopTime, timer;
-    bool isTimerRunning;
+    public GameObject prefabBlume;
+    public GameObject parentObj;
+    private bool isTimerRunning;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +40,7 @@ public class Blumen : MonoBehaviour
                 isSpacePressed = false;
                 TimerStop();
                 TimerReset();
-                // Blumen machen;
+                CreateBlumen(spacePress);
             }
             if(isKPressed && seconds >= 1)
             {
@@ -111,7 +114,7 @@ public class Blumen : MonoBehaviour
     {
         for(int i = 0; i < numberBlumen; i++)
         {
-            Instantiate();
+            Instantiate(prefabBlume, new Vector2(i * 2.0f, 0), Quaternion.identity, parentObj.transform);
         }
     } 
 }
